@@ -276,8 +276,25 @@ function UpdateFunction(){
 
 function DeleteFunction(){
     // ask for the id
+    
+    let id = input("What is the id?")
+
+    peopleModel.findByIdAndDelete(id).then( deletedperson => {
+        console.log(`The deletd id is ${deletedperson}`)
+        MainMenu()
+    }).catch(err => {
+        console.log("Invalid ID")
+        MainMenu()
+    })
+     
     // deleteById(id) works but..
     // findByIdAndDelete
+    // let confirmChoice = input("Press 1 for yes and no for 2")
+        
+    
+    
+
+
     // print the person they deleted
     // Loop back to mainmenu
 
@@ -286,8 +303,16 @@ function DeleteFunction(){
 
 function NameSearchFunction(){
     // ask for the name
-    
+    let name = input ("What is the name you want to find in the database?")
     // find({name})
+
+    peopleModel.findOne({name}).then( foundperson => {
+        console.log(`The person found is ${foundperson}`)
+        MainMenu()
+    }).catch(err => {
+        console.log("Invalid ID")
+        MainMenu()
+    })
     // print everyone found
     // Loop back to mainmenu
 }
